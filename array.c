@@ -8,30 +8,31 @@
 * @number_line: Number of lines passed
 *
 */
-void array(stack_t **stack, char *line, unsigned int number_line)
+void get_op(char *op, stack_t **stack, unsigned int line_number)
 {
-	int i;
-	instruction_t array_f[] = {
-			{"push", push},
-			{"pall", pall},
-			{"pint", pint},
-			{"pop", pop},
-			{"swap", swap},
-			{"add", add},
-			{"nop", nop},
-			{NULL, NULL}
+	size_t i;
+	instruction_t valid_ops[] = {
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
+		{NULL, NULL}
 	};
 
-	for (i = 0; array_f[i].opcode; i++)
-		if (strcmp(line, array_f[i].opcode) == 0)
+	for (i = 0; valid_ops[i].opcode != NULL; i++)
+	{
+		if (strcmp(valid_ops[i].opcode, op) == 0)
 		{
-			array_f[i].f(stack, number_line);
+			valid_ops[i].f(stack, line_number);
 			return;
 		}
-
-	if (strlen(line) != 0 && line[0] != '#')
-	{
-		printf("L%u: unknown instruction %s\n", number_line, line);
-		exit(EXIT_FAILURE);
 	}
+
+	dprintf(STDOUT_FILENO,
+		"L%u: unknown instruction %s\n",
+		line_number, op);
+	exit(EXIT_FAILURE);
 }

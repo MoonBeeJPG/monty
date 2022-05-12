@@ -2,19 +2,24 @@
 /**
 * frees - Function that frees memory previusly allocated
 */
-void frees(void)
+void free_stack(int status, void *arg)
 {
-	stack_t *to_free;
-	stack_t *temp = NULL;
+	stack_t **stack;
+	stack_t *next;
 
-	to_free = *global_head;
+	(void)status;
 
-	while (to_free)
+	stack = (stack_t **)arg;
+	if (*stack)
 	{
-		temp = to_free->next;
-
-		free(to_free);
-
-		to_free = temp;
+		(*stack)->prev->next = NULL;
+		(*stack)->prev = NULL;
 	}
+	while (*stack != NULL)
+	{
+		next = (*stack)->next;
+		free(*stack);
+		*stack = next;
+	}
+	var.stack_len = 0;
 }
