@@ -26,8 +26,7 @@ void array(stack_t **stack, char *line, unsigned int number_line)
 	for (i = 0; array_f[i].opcode; i++)
 		if (strcmp(line, array_f[i].opcode) == 0)
 		{
-			array_f[i].f(stack, number_line);
-			return;
+			return (array_f[i].f);
 		}
 
 	if (strlen(line) != 0 && line[0] != '#')
