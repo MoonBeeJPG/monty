@@ -13,6 +13,11 @@ void array(stack_t **stack, char *line, unsigned int number_line)
 	instruction_t array_f[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"swap", swap},
+		{"add", add},
+		{"nop", nop},
 		{NULL, NULL}
 	};
 
