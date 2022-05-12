@@ -1,15 +1,17 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#define DELIM "\n \r\t"
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <ctype.h>
+
 #include <stdbool.h>
 #include <string.h>
+
+#define DELIM "\n \r\t"
 
 
 /**
@@ -44,11 +46,12 @@ typedef struct instruction_s
 
 extern stack_t **head;
 
+void frees(void);
 void readit(char *input, stack_t **stack);
 void array(stack_t **stack, char *line, unsigned int number_line);
+
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void frees(void);
 
 
 #endif
