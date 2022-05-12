@@ -7,31 +7,31 @@
 */
 void readit(char *input, stack_t **stack)
 {
-	size_t lenght;
-    ssize_t reading;
-    unsigned int number = 0;
-    char *command, *line = NULL;
-    FILE *foc;
+	size_t len;
+	ssize_t read_line;
+	unsigned int num = 0;
+	char *line = NULL;
+	FILE *fd;
+	char *command;
 
-    foc = fopen(input, "r");
+	fd = fopen(input, "r");
+	if (!fd)
+	{
+		printf("Error: Can't open file %s\n", input);
+		exit(EXIT_FAILURE);
+	}
 
-    if (!foc)
-    {
-        printf("Error: can't open file %s\n", input);
-        exit(EXIT_FAILURE);
-    }
+	while ((read_line = getline(&line, &len, fd)) != -1)
+	{
+		command = strtok(line, DELIM);
+		num++;
 
-    while ((reading = getline(&line, &lenght, foc)) != -1)
-    {
-        command = strtok(line, DELIM);
-        number++;
+		if (command)
+			array(stack, command, num);
+	}
 
-        if (command)
-            array(stack, command, number);
-    }
+	if (line)
+		free(line);
 
-    if (line)
-        free(line);
-
-    fclose(foc);
+	fclose(fd);
 }
