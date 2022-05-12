@@ -25,5 +25,5 @@ int main(int argc, char *argv[])
 
 	atexit(frees);
 
-	exit(EXIT_SUCCESS);
+	return (0);
 }
