@@ -1,7 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#define DELIMS "\n \r\t"
+#define DELIM "\n \r\t"
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
