@@ -1,7 +1,5 @@
 #include "monty.h"
-
 stack_t **head;
-
 /**
 * main - Main function
 *
