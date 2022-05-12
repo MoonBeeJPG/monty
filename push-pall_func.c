@@ -7,31 +7,33 @@
 */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node;
-	char *num;
+	stack_t *new_node;
+    char *addition;
 
-	num = strtok(NULL, DELIM);
-	if (num == NULL)
-	{
-		printf("L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+    addition = strtok(NULL, DELIM);
 
-	node = malloc(sizeof(stack_t));
-	if (node == NULL)
-	{
-		printf("Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+    if (addition == NULL)
+    {
+        printf("L%u: usage: push integer\n", line_number);
+        exit(EXIT_FAILURE);
+    }
 
-	node->n = atoi(num);
-	node->prev = NULL;
-	node->next = *stack;
+    new_node = malloc(sizeof(stack_t));
 
-	if (*stack != NULL)
-		(*stack)->prev = node;
+    if (!new_node)
+    {
+        printf("Error: malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
 
-	*stack = node;
+    new_node->n = atoi(addition);
+    new_node->prev = NULL;
+    new_node->next = *stack;
+
+    if (*stack != NULL)
+        (*stack)->prev = new_node;
+
+    *stack = new_node;	
 }
 /**
 * pall - Functiont that print all the value from the stack
