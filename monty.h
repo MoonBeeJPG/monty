@@ -48,7 +48,7 @@ void readit(char *input, stack_t **stack);
 void array(stack_t **stack, char *line, unsigned int number_line);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-
+void frees(void);
 
 
 #endif
