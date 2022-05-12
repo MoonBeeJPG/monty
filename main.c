@@ -1,5 +1,7 @@
 #include "monty.h"
+
 stack_t **head;
+
 /**
 * main - Main function
 *
@@ -22,6 +24,8 @@ int main(int argc, char *argv[])
 	head = &header;
 
 	readit(argv[1], &header);
+
 	atexit(frees);
+
 	exit(EXIT_SUCCESS);
 }
