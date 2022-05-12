@@ -33,6 +33,7 @@ void array(stack_t **stack, char *line, unsigned int number_line)
 	if (strlen(line) != 0 && line[0] != '#')
 	{
 		printf("L%u: unknown instruction %s\n", number_line, line);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 }
