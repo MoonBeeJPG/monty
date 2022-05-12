@@ -14,11 +14,11 @@ void array(stack_t **stack, char *line, unsigned int number_line)
 
 	instruction_t array_f[] = {
 		{"push", push},
-		{"pall" pall},
+		{"pall", pall},
 		{NULL, NULL}
 	};
 
-	for (i = 0; array_t[i].opcode; i++)
+	for (i = 0; array_f[i].opcode; i++)
 	{
 		if (strcmp(line, array_f[i].opcode) == 0)
 		{
@@ -28,7 +28,7 @@ void array(stack_t **stack, char *line, unsigned int number_line)
 	}
 	if (strlen(line) != 0 && line[0] != '#')
 	{
-		printf("L%u: unknown instruction %s\n", numberline, line);
+		printf("L%u: unknown instruction %s\n", number_line, line);
 		exit (EXIT_FAILURE);
 	}
 }

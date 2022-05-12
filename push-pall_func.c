@@ -26,14 +26,14 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	node->n = atoi(addition);
-	node->prev = NULL;
-	node->next = *stack;
+	new_node->n = atoi(addition);
+	new_node->prev = NULL;
+	new_node->next = *stack;
 
 	if (*stack != NULL)
-		(*stack)->prev = node;
+		(*stack)->prev = new_node;
 	
-	*stack = node;
+	*stack = new_node;
 }
 /**
 * pall - Functiont that print all the value from the stack
@@ -41,7 +41,7 @@ void push(stack_t **stack, unsigned int line_number)
 * @stack: Doubly linked list representation of the stack (or queue)
 * @line_number: Number of lines passed
 */
-void pall(stack_ **stack, unsigned int line_number)
+void pall(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 {
 	stack_t *current = *stack;
 

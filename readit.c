@@ -16,23 +16,23 @@ void readit(char *input, stack_t **stack)
 
 	if (!foc)
 	{
-		printf("Error: can't open file %s\n", file);
+		printf("Error: can't open file %s\n", input);
 		exit(EXIT_FAILURE);
 	}
 
-	reading = getline(&input, &lenght, foc);
+	reading = getline(&line, &lenght, foc);
 
 	while (reading != -1)
 	{
-		command = strtok(input, DELIM);
+		command = strtok(line, DELIM);
 		number++;
 
 		if (command)
 			array(stack, command, number);
 	}
 
-	if (input)
-		free(input);
+	if (line)
+		free(line);
 
 	fclose(foc);
 }
