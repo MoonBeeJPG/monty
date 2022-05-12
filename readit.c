@@ -15,7 +15,7 @@ void readit(char *input, stack_t **stack)
 
 	foc = fopen(input, "r");
 
-	if (!foc)
+	if (foc == NULL)
 	{
 		printf("Error: can't open file %s\n", input);
 		exit(EXIT_FAILURE);
