@@ -7,6 +7,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <ctype.h>
+#include <unistd.h>
 #include <stdbool.h>
 #include <string.h>
 #define DELIM "\n \r\t"
