@@ -11,7 +11,9 @@ void frees(void)
 	while (freebie)
 	{
 		current = freebie->next;
+		
 		free(freebie);
+		
 		freebie = current;
 	}
 }
