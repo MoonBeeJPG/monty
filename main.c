@@ -1,5 +1,5 @@
 #include "monty.h"
-stack_t **head;
+stack_t **global_head;
 /**
 * main - Main function
 *
@@ -10,18 +10,18 @@ stack_t **head;
 */
 int main(int argc, char *argv[])
 {
-	stack_t *header;
+	stack_t *head;
 
 	if (argc != 2)
 	{
-		dprintf(STDOUT_FILENO, "USAGE: monty file\n");
+		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	header = NULL;
-	head = &header;
+	head = NULL;
+	global_head = &head;
 
-	readit(argv[1], &header);
+	readit(argv[1], &head);
 
 	atexit(frees);
 

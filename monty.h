@@ -42,9 +42,10 @@ char *opcode;
 void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern stack_t **head;
+extern stack_t **global_head;
 
 void frees(void);
+
 void readit(char *input, stack_t **stack);
 void array(stack_t **stack, char *line, unsigned int number_line);
 

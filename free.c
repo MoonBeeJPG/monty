@@ -4,16 +4,17 @@
 */
 void frees(void)
 {
-	stack_t *freebie, *current = NULL;
+	stack_t *to_free;
+	stack_t *temp = NULL;
 
-	freebie = *head;
+	to_free = *global_head;
 
-	while (freebie)
+	while (to_free)
 	{
-		current = freebie->next;
+		temp = to_free->next;
 
-		free(freebie);
+		free(to_free);
 
-		freebie = current;
+		to_free = temp;
 	}
 }
