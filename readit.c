@@ -23,6 +23,9 @@ void readit(char *input, stack_t **stack)
 
 	while ((reading = getline(&line, &lenght, foc)) != -1)
 	{
+		if (!line)
+			exit(EXIT_FAILURE);
+
 		command = strtok(line, DELIM);
 		number++;
 
