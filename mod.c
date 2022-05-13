@@ -6,7 +6,7 @@
 * @line_number: The line number of the file
 * Return: The edited stack
 */
-stack_t *mod(stack_t **stack, unsigned int line_number)
+stack_t *mul(stack_t **stack, unsigned int line_number)
 {
     int sum = 0;
     stack_t *head = *stack;
@@ -22,7 +22,7 @@ line_number);
     }
 
     /* Sum first two nodes, and store it in second node */
-    sum = (head->n) % (head->next->n);
+    sum = (head->n) * (head->next->n);
     head->next->n = sum;
     pop(stack, 0);
 
