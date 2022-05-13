@@ -1,25 +1,23 @@
 #include "monty.h"
+
 /**
-* frees - Function that frees memory previusly allocated
-*/
-void free_stack(int status, void *arg)
+ * global_free - globally frees memory, previously alocated in the program
+ *
+ * Return: void
+ */
+void frees(void)
 {
-	stack_t **stack;
-	stack_t *next;
+	stack_t *to_free;
+	stack_t *temp = NULL;
 
-	(void)status;
+	to_free = *global_head;
 
-	stack = (stack_t **)arg;
-	if (*stack)
+	while (to_free)
 	{
-		(*stack)->prev->next = NULL;
-		(*stack)->prev = NULL;
+		temp = to_free->next;
+
+		free(to_free);
+
+		to_free = temp;
 	}
-	while (*stack != NULL)
-	{
-		next = (*stack)->next;
-		free(*stack);
-		*stack = next;
-	}
-	var.stack_len = 0;
 }
