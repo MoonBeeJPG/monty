@@ -24,6 +24,7 @@ stack_t *(*op_func(char *s, stack_t **stack, unsigned int line_number))(stack_t 
 		{"div", divi},
 		{"mod", mod},
 		{"rotl", rotl},
+		{"pchar", pchar},
 		{NULL, NULL}
 	};
 	char *opcode;
