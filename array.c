@@ -1,37 +1,43 @@
 #include "monty.h"
+
 /**
-* array - Function that compares the reading line and matches it
-* with the corresponding function if its have
-*
-* @stack: Double linked list represetnation of a stack (or queue)
-* @line: Input line
-* @number_line: Number of lines passed
-*
-*/
-void array(stack_t **stack, char *op, unsigned int line_num)
+ * op_func - This function selects the correct func to
+ * perform the operation
+ * @s: The operator passed as argument to program
+ * @stack: The pointer to the stack
+ * @line_number: The line number in the file
+ * Return: A pointer to the function that corresponds to the operator
+ */
+
+stack_t *(*op_func(char *s, stack_t **stack, unsigned int line_number))(stack_t **stack, unsigned int line_number)
 {
-	int i;
 	instruction_t ops[] = {
-			{"push", push},
-			{"pall", pall},
-			{"pint", pint},
-			{"pop", pop},
-			{"swap", swap},
-			{"add", add},
-			{"nop", nop},
-			{NULL, NULL}
+		{"push", push},
+		{"pall", pall},
+		{"pint", pint},
+		{"pop", pop},
+		{"add", add},
+		{"swap", swap},
+		{"sub", sub},
+		{"pstr", pstr},
+		{NULL, NULL}
 	};
+	char *opcode;
+	int i = 0;
 
-	for (i = 0; ops[i].opcode; i++)
-		if (strcmp(op, ops[i].opcode) == 0)
-		{
-			ops[i].f(stack, line_num);
-			return;
-		}
-
-	if (strlen(op) != 0 && op[0] != '#')
+	while (i < 11)
 	{
-		printf("L%u: unknown instruction %s\n", line_num, op);
-		exit(EXIT_FAILURE);
+		opcode = (ops[i]).opcode;
+		/* if the opcode is in the list */
+		if (strcmp(s, opcode) == 0)
+		{
+			/* return that value */
+			return (*(ops[i]).f);
+		}
+		i++;
 	}
+
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, s);
+	free_stack(stack);
+	exit(EXIT_FAILURE);
 }
