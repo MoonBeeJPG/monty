@@ -123,8 +123,9 @@ stack_t *swap(stack_t **stack,
 * @line_number: Line number of file
 * Return: 0
 */
-stack_t *nop(stack_t **stack __attribute__ ((unused)),
-	  unsigned int line_number __attribute__((unused)))
+stack_t *nop(stack_t **stack, unsigned int line_number)
 {
-	return (0);
+	(void) stack;
+	(void) line_number;
+	exit(EXIT_SUCCESS);
 }
