@@ -86,3 +86,21 @@ line_number);
 
     return (*stack);
 }
+stack_t *rotl(stack_t **stack,
+	      unsigned int line_number __attribute__ ((unused)))
+{
+	stack_t *head = *stack;
+
+	while (!head)
+		head = head->next;
+
+	/* stack now points to the second node */
+	*stack = (*stack)->next;
+	head->next = (*stack)->prev;
+	(*stack)->prev = NULL;
+	head->next->prev = head;
+	head = head->next;
+	head->next = NULL;
+
+	return (*stack);
+}

@@ -64,5 +64,8 @@ stack_t *sub(stack_t **stack, unsigned int line_number);
 stack_t *pstr(stack_t **stack, unsigned int line_number);
 stack_t *mul(stack_t **stack, unsigned int line_number);
 stack_t *divi(stack_t **stack, unsigned int line_number);
+stack_t *pchar(stack_t **stack, unsigned int line_num);
+stack_t *rotl(stack_t **stack,
+          unsigned int line_number __attribute__ ((unused)));
 stack_t *mod(stack_t **stack, unsigned int line_number);
 #endif /* _MONTY_H_ */
